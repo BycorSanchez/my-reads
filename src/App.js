@@ -16,14 +16,34 @@ class BooksApp extends React.Component {
       .catch((error) => console.error("Failed to fetch books", error));
   }
 
+  updateShelf = (book, shelf) => {
+    BooksAPI.update(book, shelf)
+      .then(() => {
+        this.setState(state => ({
+          //Seach in old state
+          books: state.books.filter(b => {
+            //Find book by id & update shelf
+            return (b.id === book.id) ? (book.shelf = shelf) : book;
+          })
+        }));
+      })
+      .catch((error) => console.error("Failed to update book shelf", error));
+  }
+
   render() {
     return (
       <div className="app">
         <Route exact path="/" render={() => (
-          <MainPage books={this.state.books} />
+          <MainPage
+            books={this.state.books}
+            onShelfChange={this.updateShelf}
+          />
         )} />
         <Route path="/search" render={() => (
-          <SearchPage books={this.state.books} />
+          <SearchPage
+            books={this.state.books}
+            onShelfChange={this.updateShelf}
+          />
         )}></Route>
       </div>
     )

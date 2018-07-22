@@ -6,7 +6,8 @@ import { shelfTypes } from "./BooksAPI";
 
 class MainPage extends Component {
     static propTypes = {
-        books: PropTypes.array.isRequired
+        books: PropTypes.array.isRequired,
+        onShelfChange: PropTypes.func.isRequired
     };
 
     // Categorize each book depending on its shelf value
@@ -24,7 +25,7 @@ class MainPage extends Component {
     };
 
     render() {
-        const { books } = this.props;
+        const { books, onShelfChange } = this.props;
         const bookShelves = this.categorize(books);
 
         return (
@@ -38,10 +39,11 @@ class MainPage extends Component {
                             shelfTypes
                                 .filter(shelf => bookShelves.has(shelf.key))
                                 .map(shelf =>
-                                    (<BookShelf 
-                                        key={shelf.key} 
-                                        name={shelf.label} 
-                                        books={bookShelves.get(shelf.key)} 
+                                    (<BookShelf
+                                        key={shelf.key}
+                                        name={shelf.label}
+                                        books={bookShelves.get(shelf.key)}
+                                        onShelfChange={onShelfChange}
                                     />))
                         }
                     </div>

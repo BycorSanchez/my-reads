@@ -1,25 +1,31 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Link } from 'react-router-dom';
 import Book from "./Book";
 import SearchBar from "./SearchBar";
 
 class SearchPage extends Component {
     static propTypes = {
-        books: PropTypes.array.isRequired
+        books: PropTypes.array.isRequired,
+        onShelfChange: PropTypes.func.isRequired
     };
 
     render() {
-        const { books } = this.props;
+        const { books, onShelfChange } = this.props;
 
         return (
             <main className="search-books">
-                <SearchBar/>
+                <SearchBar />
                 <div className="search-books-results">
                     <ol className="books-grid">
                         {   //Display all books
-                            books.map(book => 
-                                <li><Book key={book.id} book={book} /></li>
+                            books.map(book =>
+                                <li>
+                                    <Book
+                                        key={book.id}
+                                        book={book}
+                                        onShelfChange={onShelfChange}
+                                    />
+                                </li>
                             )
                         }
                     </ol>
