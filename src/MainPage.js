@@ -40,12 +40,22 @@ class MainPage extends Component {
         const bookShelves = this.categorize(books);
 
         return (
-            <div>
-                {   //For each shelf, create a BookShelf component giving it a name and the books it contains
-                    Array.from(bookShelves).map(([shelfKey, books]) =>
-                        <BookShelf key={shelfKey} name={this.shelfLabel(shelfKey)} books={books} />
-                    )
-                }
+            <div className="list-books">
+                <div className="list-books-title">
+                    <h1>MyReads</h1>
+                </div>
+                <div className="list-books-content">
+                    <div>
+                        {   //Map shelf to BookShelf component, giving it a name and the books it contains
+                            Array.from(bookShelves).map(([shelfKey, books]) =>
+                                <BookShelf key={shelfKey} name={this.shelfLabel(shelfKey)} books={books} />
+                            )
+                        }
+                    </div>
+                </div>
+                <div className="open-search">
+                    //TODO Link to search page
+                </div>
             </div>
         );
     };
