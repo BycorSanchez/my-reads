@@ -1,27 +1,29 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-import * as BooksAPI from './BooksAPI';
-import './App.css';
+import React from "react";
+import { Route } from "react-router-dom";
+import * as BooksAPI from "./BooksAPI";
+import MainPage from "./MainPage";
+import SearchPage from "./SearchPage";
+import "./App.css";
 
 class BooksApp extends React.Component {
   state = {
     books: []
   }
 
-  componentDidMount(){
+  componentDidMount() {
     BooksAPI.getAll()
       .then((books) => this.setState({ books }))
-      .catch((error) => console.error("Failed to fetch books"));
+      .catch((error) => console.error("Failed to fetch books", error));
   }
 
   render() {
     return (
       <div className="app">
         <Route exact to="/" render={() => (
-          <div></div>
+          <MainPage books={this.state.books}/>
         )} />
         <Route to="/search" render={() => (
-          <div></div>
+          <SearchPage books={this.state.books}/>
         )}></Route>
       </div>
     )
