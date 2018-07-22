@@ -6,22 +6,25 @@ import SearchBar from "./SearchBar";
 class SearchPage extends Component {
     static propTypes = {
         books: PropTypes.array.isRequired,
-        onShelfChange: PropTypes.func.isRequired
+        onShelfChange: PropTypes.func.isRequired,
+        updateSearch: PropTypes.func.isRequired
     };
 
     render() {
-        const { books, onShelfChange } = this.props;
+        const { books, onShelfChange, updateSearch } = this.props;
 
         return (
             <main className="search-books">
-                <SearchBar />
+                <SearchBar 
+                    updateSearch={updateSearch}
+                />
                 <div className="search-books-results">
                     <ol className="books-grid">
-                        {   //Display all books
+                        {   
+                            books && books.length > 0 &&   
                             books.map(book =>
-                                <li>
+                                <li key={book.id}>
                                     <Book
-                                        key={book.id}
                                         book={book}
                                         onShelfChange={onShelfChange}
                                     />
@@ -32,7 +35,7 @@ class SearchPage extends Component {
                 </div>
             </main>
         );
-    }
+    };
 }
 
 export default SearchPage;

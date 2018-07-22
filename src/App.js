@@ -7,7 +7,9 @@ import "./App.css";
 
 class BooksApp extends React.Component {
   state = {
-    books: []
+    books: [],
+    booksFound: [],
+    query: "",
   }
 
   componentDidMount() {
@@ -17,32 +19,52 @@ class BooksApp extends React.Component {
   }
 
   updateShelf = (book, shelf) => {
+    
     BooksAPI.update(book, shelf)
       .then(() => {
-        this.setState(state => ({
-          //Seach in old state
-          books: state.books.filter(b => {
-            //Find book by id & update shelf
-            return (b.id === book.id) ? (book.shelf = shelf) : book;
-          })
-        }));
+        this.setState(state => {
+          const newBooks = state.books;
+
+          //Add book if not present on the list
+          if (!this.hasBook(book))
+            newBooks.push(book);
+
+          //Update book shelf
+          newBooks.filter(b => (b.id === book.id) ? (book.shelf = shelf) : book);
+
+          return ({ books: newBooks });
+        });
       })
       .catch((error) => console.error("Failed to update book shelf", error));
   }
 
+  searchBooks = query => {
+    if (query.length > 0) {
+      // Retrieve query data from API and set state for search results
+      BooksAPI.search(query).then(data => {
+        this.setState({ booksFound: data });
+      });
+    }
+  };
+
+  hasBook = (book) => this.state.books.some(b => b.id === book.id);
+
   render() {
+    const { books, booksFound } = this.state;
+
     return (
       <div className="app">
         <Route exact path="/" render={() => (
           <MainPage
-            books={this.state.books}
+            books={books}
             onShelfChange={this.updateShelf}
           />
         )} />
         <Route path="/search" render={() => (
           <SearchPage
-            books={this.state.books}
+            books={booksFound}
             onShelfChange={this.updateShelf}
+            updateSearch={this.searchBooks}
           />
         )}></Route>
       </div>

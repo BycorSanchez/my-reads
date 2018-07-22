@@ -14,7 +14,9 @@ class Book extends Component {
         return (
             <div className="book">
                 <div className="book-top">
-                    <img src={book.imageLinks.thumbnail} alt={book.title} className="book-cover" />
+                    {   book.imageLinks &&
+                        (<img src={book.imageLinks.thumbnail} alt={book.title} className="book-cover" />)
+                    }
                     <div className="book-shelf-changer">
                         <select
                             defaultValue={book.shelf}
@@ -36,6 +38,7 @@ class Book extends Component {
                 <h3 className="book-title">{book.title}</h3>
 
                 { // Display each author in a new line
+                    book.authors &&
                     book.authors.map(author => (<p key={author} className="book-authors">{author}</p>))
                 }
             </div>
