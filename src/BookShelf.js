@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import sortBy from 'sort-by';
 import Book from "./Book";
 
 class BookShelf extends Component {
@@ -10,6 +11,9 @@ class BookShelf extends Component {
 
     render() {
         const { name, books } = this.props;
+
+        //Sort books by title
+        books.sort(sortBy("title"));
 
         return (
             <section className="bookshelf">
