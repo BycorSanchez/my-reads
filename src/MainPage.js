@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Link } from 'react-router-dom';
 import BookShelf from "./BookShelf";
 import { shelfTypes } from "./BooksAPI";
 
@@ -46,7 +47,7 @@ class MainPage extends Component {
                     </div>
                 </main>
                 <nav className="open-search">
-                    {/* TODO Link to search page */}
+                    <Link to="/search">Search</Link>
                 </nav>
             </div>
         );

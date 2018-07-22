@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Link } from 'react-router-dom';
+import Book from "./Book";
 
 class SearchPage extends Component {
     static propTypes = {
@@ -7,8 +9,20 @@ class SearchPage extends Component {
     };
 
     render() {
+        const { books } = this.props;
+
         return (
-            <div></div>
+            <main className="search-books">
+                <div className="search-books-results">
+                    <ol className="books-grid">
+                        {   //Display all books
+                            books.map(book => 
+                                <li><Book key={book.id} book={book} /></li>
+                            )
+                        }
+                    </ol>
+                </div>
+            </main>
         );
     }
 }
