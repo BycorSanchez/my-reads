@@ -8,8 +8,17 @@ class BookShelf extends Component {
     };
 
     render() {
+        const { name, books } = this.props;
+
         return (
-            <div></div>
+            <div className="bookshelf">
+                <h2 className="bookshelf-title">{name}</h2>
+                <div className="bookshelf-books">
+                    <ol className="books-grid">
+                        
+                    </ol>
+                </div>
+            </div>
         );
     }
 }
