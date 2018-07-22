@@ -7,8 +7,16 @@ class Book extends Component{
     };
 
     render(){
+        const { book } = this.props;
+
         return (
-            <div className="book"></div>
+            <div className="book">
+                <div className="book-top">
+                    <img src={book.imageLinks.thumbnail} alt={book.title} className="book-cover"/>
+                </div>
+                <h3 className="book-title">{book.title}</h3>
+                { book.authors.map(author => (<p key={author} className="book-authors">{author}</p>))}
+            </div>
         );
     }
 }

@@ -131,6 +131,7 @@ body, .app {
 }
 .book-authors {
   color: #999;
+  margin: 3px 0;
 }
 
 .book-top {
@@ -166,6 +167,8 @@ body, .app {
 .book-cover {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: #eee;
+  max-width: 128px;
+  max-height: 205px;
 }
 .book-cover-title {
   padding: 20px 10px 0;

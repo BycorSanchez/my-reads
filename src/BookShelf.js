@@ -16,7 +16,9 @@ class BookShelf extends Component {
                 <h2 className="bookshelf-title">{name}</h2>
                 <div className="bookshelf-books">
                     <ol className="books-grid">
-                        { books.map(book => (<li key={book.id}><Book book={book}/></li>))}
+                        {   //Create books to show 
+                            books.map(book => (<li key={book.id}><Book book={book}/></li>))
+                        }
                     </ol>
                 </div>
             </section>
