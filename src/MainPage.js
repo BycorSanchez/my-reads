@@ -41,10 +41,10 @@ class MainPage extends Component {
 
         return (
             <div className="list-books">
-                <div className="list-books-title">
+                <header className="list-books-title">
                     <h1>MyReads</h1>
-                </div>
-                <div className="list-books-content">
+                </header>
+                <main className="list-books-content">
                     <div>
                         {   //Map shelf to BookShelf component, giving it a name and the books it contains
                             Array.from(bookShelves).map(([shelfKey, books]) =>
@@ -52,10 +52,10 @@ class MainPage extends Component {
                             )
                         }
                     </div>
-                </div>
-                <div className="open-search">
-                    //TODO Link to search page
-                </div>
+                </main>
+                <nav className="open-search">
+                    {/* TODO Link to search page */}
+                </nav>
             </div>
         );
     };
