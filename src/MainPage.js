@@ -1,24 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import BookShelf from "./BookShelf";
+import { shelfTypes } from "./BooksAPI";
 
 class MainPage extends Component {
     static propTypes = {
         books: PropTypes.array.isRequired
-    };
-
-    //Translate shelf key to a proper label
-    shelfLabel = (shelfKey) => {
-        switch (shelfKey) {
-            case "currentlyReading":
-                return "Currently Reading";
-            case "wantToRead":
-                return "Want to Read";
-            case "read":
-                return "Read";
-            default:
-                return "Other";
-        }
     };
 
     // Categorize each book depending on its shelf value
@@ -46,10 +33,15 @@ class MainPage extends Component {
                 </header>
                 <main className="list-books-content">
                     <div>
-                        {   //Map shelf to BookShelf component, giving it a name and the books it contains
-                            Array.from(bookShelves).map(([shelfKey, books]) =>
-                                <BookShelf key={shelfKey} name={this.shelfLabel(shelfKey)} books={books} />
-                            )
+                        {   //If a shelf contains books, map it to BookShelf component, giving it a name and its books
+                            shelfTypes
+                                .filter(shelf => bookShelves.has(shelf.key))
+                                .map(shelf =>
+                                    (<BookShelf 
+                                        key={shelf.key} 
+                                        name={shelf.label} 
+                                        books={bookShelves.get(shelf.key)} 
+                                    />))
                         }
                     </div>
                 </main>

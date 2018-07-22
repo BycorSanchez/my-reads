@@ -42,3 +42,15 @@ export const search = (query) =>
     body: JSON.stringify({ query })
   }).then(res => res.json())
     .then(data => data.books)
+
+
+export const shelfTypes = [{
+  key: 'currentlyReading',
+  label: 'Currently Reading'
+},{
+  key: 'wantToRead',
+  label: 'Want to Read'
+},{
+  key: 'read',
+  label: 'Read'
+}];
