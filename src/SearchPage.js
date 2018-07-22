@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from 'react-router-dom';
 import Book from "./Book";
+import SearchBar from "./SearchBar";
 
 class SearchPage extends Component {
     static propTypes = {
@@ -13,6 +14,7 @@ class SearchPage extends Component {
 
         return (
             <main className="search-books">
+                <SearchBar/>
                 <div className="search-books-results">
                     <ol className="books-grid">
                         {   //Display all books
