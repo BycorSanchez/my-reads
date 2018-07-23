@@ -39,16 +39,21 @@ class BooksApp extends React.Component {
   }
 
   searchBooks = query => {
-    this.setState({ query });
 
     if (query.length > 0) {
       // Retrieve query data from API
       BooksAPI.search(query).then(data => {
       	//Update booksFound state, unless there is an error
       	const booksFound = data.error? [] : data;
-        this.setState({ booksFound });
+        this.setState({ query, booksFound });
       })
       .catch((error) => console.error("Search failed", error));
+    }
+    else{
+      this.setState({ 
+        query,
+        booksFound: [] 
+      });
     }
   };
 
