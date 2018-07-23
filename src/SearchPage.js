@@ -21,7 +21,6 @@ class SearchPage extends Component {
                 <div className="search-books-results">
                     <ol className="books-grid">
                         {   
-                            books && books.length > 0 &&   
                             books.map(book =>
                                 <li key={book.id}>
                                     <Book
