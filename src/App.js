@@ -19,21 +19,21 @@ class BooksApp extends React.Component {
   }
 
   updateShelf = (book, shelf) => {
-    
+
     BooksAPI.update(book, shelf).then(() => {
-        this.setState(state => {
-          const { books } = state;
+      this.setState(state => {
+        const { books } = state;
 
-          //Add book if not present
-          if (!this.getBook(book.id))
-            books.push(book);
+        //Add book if not present
+        if (!this.getBook(book.id))
+          books.push(book);
 
-          //Update book shelf
-          this.syncBookShelf(book, shelf);
+        //Update book shelf
+        this.syncBookShelf(book, shelf);
 
-          return ({ books });
-        });
-      })
+        return ({ books });
+      });
+    })
       .catch(error => console.error("Failed to update book shelf", error));
   }
 
@@ -46,15 +46,15 @@ class BooksApp extends React.Component {
       BooksAPI.search(query).then(data => {
 
         //Update booksFound, unless there is an error
-        booksFound = data.error? [] : data;
+        booksFound = data.error ? [] : data;
 
         //Update shelves
         this.syncShelf(booksFound);
         this.setState({ query, booksFound });
       })
-      .catch(error => console.error("Search failed", error));
+        .catch(error => console.error("Search failed", error));
     }
-    else{
+    else {
       //Clear search
       this.setState({ query, booksFound });
     }

@@ -20,7 +20,7 @@ class SearchBar extends Component {
                         type="text"
                         placeholder="Search by title or author"
                         defaultValue={query}
-                        onChange={ (event) => {
+                        onChange={(event) => {
                             const value = event.target.value;
 
                             // Clear previous timeout because user typed again
@@ -30,7 +30,6 @@ class SearchBar extends Component {
                             timeout = setTimeout(function () {
                                 updateSearch(value);
                             }, 300);
-                        
                         }}
                     />
                 </div>

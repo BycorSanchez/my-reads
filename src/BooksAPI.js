@@ -47,10 +47,10 @@ export const search = (query) =>
 export const shelfTypes = [{
   key: 'currentlyReading',
   label: 'Currently Reading'
-},{
+}, {
   key: 'wantToRead',
   label: 'Want to Read'
-},{
+}, {
   key: 'read',
   label: 'Read'
 }];

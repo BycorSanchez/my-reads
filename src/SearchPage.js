@@ -16,19 +16,18 @@ class SearchPage extends Component {
 
         return (
             <main className="search-books">
-                <SearchBar 
-                    query={query} 
+                <SearchBar
+                    query={query}
                     updateSearch={updateSearch}
                 />
 
                 <div className="search-books-results">
                     {
-                        query && 
-                        (<div className="search-books-info">{books.length > 0 ? `${books.length} books found`: "No books found"} </div>)
+                        query &&
+                        (<div className="search-books-info">{books.length > 0 ? `${books.length} books found` : "No books found"} </div>)
                     }
-                    
                     <ol className="books-grid">
-                        {   
+                        {   //Display books found
                             books.map(book =>
                                 <li key={book.id}>
                                     <Book
