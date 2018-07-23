@@ -28,8 +28,8 @@ class BookShelf extends Component {
                                         book={book}
                                         onShelfChange={onShelfChange}
                                     />
-                                </li>)
-                            )
+                                </li>
+                            ))
                         }
                     </ol>
                 </div>

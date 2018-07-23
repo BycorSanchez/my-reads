@@ -11,13 +11,13 @@ class MainPage extends Component {
     };
 
     // Categorize each book depending on its shelf value
-    categorize = (books) => {
+    categorize = books => {
         // Map key: shelf key
         // Map values: books in that shelf
         let map = new Map();
         books.forEach(book => {
             const shelf = book.shelf;
-            let books = (map.has(shelf)) ? map.get(shelf) : [];
+            let books = map.has(shelf) ? map.get(shelf) : [];
             books.push(book);
             map.set(shelf, books);
         });
@@ -35,16 +35,17 @@ class MainPage extends Component {
                 </header>
                 <main className="list-books-content">
                     <div>
-                        {   //If a shelf contains books, map it to BookShelf component, giving it a name and its books
+                        {   //Create BookShelf of every type, except if it does not have any book
                             shelfTypes
                                 .filter(shelf => bookShelves.has(shelf.key))
-                                .map(shelf =>
-                                    (<BookShelf
+                                .map(shelf => (
+                                    <BookShelf
                                         key={shelf.key}
                                         name={shelf.label}
                                         books={bookShelves.get(shelf.key)}
                                         onShelfChange={onShelfChange}
-                                    />))
+                                    />
+                                ))
                         }
                     </div>
                 </main>
