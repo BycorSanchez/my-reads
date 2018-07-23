@@ -2,7 +2,7 @@
 
 This is the seventh required project on the [Udacity Front End Nanodegree](https://eu.udacity.com/course/front-end-web-developer-nanodegree--nd001).
 
-The goal of this project was to build a web application using [React.js](https://reactjs.org/), as well as an API server and client in order to persist information as the user interacts.
+The goal of this project was to build a web application using [React.js](https://reactjs.org/). It should also use an API server and client in order to persist information as the user interacts.
 
 ## What is it
 
