@@ -14,8 +14,13 @@ class Book extends Component {
         return (
             <div className="book">
                 <div className="book-top">
-                    {   book.imageLinks &&
+                    {   //Show thumbnail
+                        book.imageLinks &&
                         (<img src={book.imageLinks.thumbnail} alt={book.title} className="book-cover" />)
+                    }
+                    {   //Show a placeholder if thumbnail is not available
+                        !book.imageLinks &&
+                        (<div className="book-cover-placeholder">No Preview</div>)
                     }
                     <div className="book-shelf-changer">
                         <select
@@ -23,7 +28,7 @@ class Book extends Component {
                             onChange={event => onShelfChange(book, event.target.value)}
                         >
                             <option value="move" disabled>Move to...</option>
-                            {   //Create options according to shelves
+                            {   //Display shelf options
                                 shelfTypes.map(({ key, label }) => (
                                     <option
                                         key={key}
@@ -37,7 +42,7 @@ class Book extends Component {
                 </div>
                 <h3 className="book-title">{book.title}</h3>
 
-                { // Display each author in a new line
+                {   // Display authors in different lines
                     book.authors &&
                     book.authors.map(author => (<p key={author} className="book-authors">{author}</p>))
                 }
