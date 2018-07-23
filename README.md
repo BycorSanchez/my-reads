@@ -68,8 +68,6 @@ The backend API uses a fixed set of cached search results and is limited to a pa
 Most of the code in this project has been written to the ES6 JavaScript specification for compatibility with modern web browsers and future proofing JavaScript code.
 
 ----
-*Main page*
 ![MyReads main page](img/mainpage.png)
-
-*Search page*
+----
 ![MyReads search page](img/searchpage.png)
