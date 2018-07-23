@@ -18,13 +18,12 @@ class SearchBar extends Component {
                     <input
                         type="text"
                         placeholder="Search by title or author"
-                        //onChange={(event) => updateSearch(event.target.value)}
                         onChange={ (event) => {
                             const value = event.target.value;
 
                             clearTimeout(timeout);
 
-                            // Make a new timeout set to go off in 800ms
+                            // Make a new timeout set to go off in 500ms
                             timeout = setTimeout(function () {
                                 updateSearch(value);
                             }, 500);

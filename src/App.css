@@ -99,6 +99,12 @@ body, .app {
   font-size: 0;
 }
 
+.search-books-info{
+    margin-left: 18px;
+    color: #424242;
+    font-style: italic;
+}
+
 .search-books-results {
   padding: 80px 10px 20px;
 }

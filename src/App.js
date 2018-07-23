@@ -39,6 +39,8 @@ class BooksApp extends React.Component {
   }
 
   searchBooks = query => {
+    this.setState({ query });
+
     if (query.length > 0) {
       // Retrieve query data from API
       BooksAPI.search(query).then(data => {
@@ -53,7 +55,7 @@ class BooksApp extends React.Component {
   hasBook = (book) => this.state.books.some(b => b.id === book.id);
 
   render() {
-    const { books, booksFound } = this.state;
+    const { books, query, booksFound } = this.state;
 
     return (
       <div className="app">
@@ -66,6 +68,7 @@ class BooksApp extends React.Component {
         <Route path="/search" render={() => (
           <SearchPage
             books={booksFound}
+            query={query}
             onShelfChange={this.updateShelf}
             updateSearch={this.searchBooks}
           />
