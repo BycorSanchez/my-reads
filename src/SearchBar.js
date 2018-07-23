@@ -14,6 +14,7 @@ class SearchBar extends Component {
 
         return (
             <div className="search-books-bar">
+                {/* Link back to main page */}
                 <Link to="/" className="close-search">Close</Link>
                 <div className="search-books-input-wrapper">
                     <input

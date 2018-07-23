@@ -22,7 +22,7 @@ class SearchPage extends Component {
                 />
 
                 <div className="search-books-results">
-                    {
+                    {   // Display some search information
                         query &&
                         (<div className="search-books-info">{books.length > 0 ? `${books.length} books found` : "No books found"} </div>)
                     }

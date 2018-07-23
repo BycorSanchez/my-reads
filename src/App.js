@@ -12,19 +12,21 @@ class BooksApp extends React.Component {
     query: "",
   }
 
+  //Display all books
   componentDidMount() {
     BooksAPI.getAll()
       .then(books => this.setState({ books }))
       .catch(error => console.error("Failed to fetch books", error));
   }
 
+  //Update book's shelf
   updateShelf = (book, shelf) => {
 
     BooksAPI.update(book, shelf).then(() => {
       this.setState(state => {
         const { books } = state;
 
-        //Add book if not present
+        //Add book to list if not present
         if (!this.getBook(book.id))
           books.push(book);
 
@@ -37,6 +39,7 @@ class BooksApp extends React.Component {
       .catch(error => console.error("Failed to update book shelf", error));
   }
 
+  // Search for books that match a query
   searchBooks = query => {
     let booksFound = [];
 
@@ -82,6 +85,9 @@ class BooksApp extends React.Component {
   render() {
     const { books, booksFound, query } = this.state;
 
+    // Display two pages
+    //  - Main page (route "/"): it contains books categorized in shelves
+    //  - Search page (route "/search"): it allows to find books
     return (
       <div className="app">
         <Route exact path="/" render={() => (

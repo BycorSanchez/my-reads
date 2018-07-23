@@ -14,7 +14,7 @@ class Book extends Component {
         return (
             <div className="book">
                 <div className="book-top">
-                    {   //Show thumbnail
+                    {   //Show thumbnail if present
                         book.imageLinks &&
                         (<img src={book.imageLinks.thumbnail} alt={book.title} className="book-cover" />)
                     }
@@ -41,7 +41,6 @@ class Book extends Component {
                     </div>
                 </div>
                 <h3 className="book-title">{book.title}</h3>
-
                 {   // Display authors in different lines
                     book.authors &&
                     book.authors.map(author => (<p key={author} className="book-authors">{author}</p>))

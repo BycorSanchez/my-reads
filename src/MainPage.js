@@ -50,6 +50,7 @@ class MainPage extends Component {
                     </div>
                 </main>
                 <nav className="open-search">
+                    {/* Link to search page */}
                     <Link to="/search">Search</Link>
                 </nav>
             </div>
