@@ -16,7 +16,10 @@ class SearchPage extends Component {
 
         return (
             <main className="search-books">
-                <SearchBar updateSearch={updateSearch}/>
+                <SearchBar 
+                    query={query} 
+                    updateSearch={updateSearch}
+                />
 
                 <div className="search-books-results">
                     {

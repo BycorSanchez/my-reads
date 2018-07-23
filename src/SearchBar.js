@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 
 class SearchBar extends Component {
     static propTypes = {
+        query: PropTypes.string.isRequired,
         updateSearch: PropTypes.func.isRequired
     }
 
     render() {
         let timeout;
-        const { updateSearch } = this.props;
+        const { query, updateSearch } = this.props;
 
         return (
             <div className="search-books-bar">
@@ -18,15 +19,17 @@ class SearchBar extends Component {
                     <input
                         type="text"
                         placeholder="Search by title or author"
+                        defaultValue={query}
                         onChange={ (event) => {
                             const value = event.target.value;
 
+                            // Clear previous timeout because user typed again
                             clearTimeout(timeout);
 
-                            // Make a new timeout set to go off in 500ms
+                            // Set 300ms timeout before actually search
                             timeout = setTimeout(function () {
                                 updateSearch(value);
-                            }, 500);
+                            }, 300);
                         
                         }}
                     />
