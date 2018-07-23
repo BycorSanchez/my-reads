@@ -2,7 +2,7 @@
 
 This is the seventh required project on the [Udacity Front End Nanodegree](https://eu.udacity.com/course/front-end-web-developer-nanodegree--nd001).
 
-The goal of this project was to build a web application using [React.js](https://reactjs.org/), it should also use an API server and client in order to persist information as the user interacts.
+The goal of this project was to build a web application using [React.js](https://reactjs.org/), as well as an API server and client in order to persist information as the user interacts.
 
 ## What is it
 
@@ -68,3 +68,8 @@ The backend API uses a fixed set of cached search results and is limited to a pa
 Most of the code in this project has been written to the ES6 JavaScript specification for compatibility with modern web browsers and future proofing JavaScript code.
 
 ----
+*Main page*
+![MyReads main page](img/mainpage.png)
+
+*Search page*
+![MyReads search page](img/searchpage.png)
